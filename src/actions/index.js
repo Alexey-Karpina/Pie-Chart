@@ -5,7 +5,7 @@ export const formAddedToList = () => {
     type: "FORM_ADDED_TO_LIST",
     payload: {
       name: "",
-      number: "",
+      number: null,
       id: uuidv4(),
     },
   };

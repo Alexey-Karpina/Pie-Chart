@@ -4,9 +4,14 @@ import {formChangedValues} from '../../actions';
 
 const FormListItem = ({ list, dispatch }) => {
   const { id } = list;
-  const [state, setState] = useState({ name: "", number: "", id: id });
+  const [state, setState] = useState({ name: "", number: null, id: id });
 
   const handleChange = (e) => {
+      if (e.target.name === "number") {
+        setState({ ...state, [e.target.name]: +e.target.value });
+        dispatch(formChangedValues(state.name, state.number, state.id));
+        return;
+      }
     setState({ ...state, [e.target.name]: e.target.value });
     console.log("State: ",state);
     dispatch(formChangedValues(state.name, state.number, state.id));
